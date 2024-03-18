@@ -1,0 +1,2 @@
+class StoreEmail < ApplicationRecord
+end
