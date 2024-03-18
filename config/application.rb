@@ -26,8 +26,14 @@ module RubyCoffe
 
 
     config.time_zone = 'Brasilia'
-    
     config.active_record.default_timezone = :local
+
+
+
+    # factorybot
+    config.generators do |g|
+      g.factory_bot suffix: "factory"
+    end
 
   end
 end
