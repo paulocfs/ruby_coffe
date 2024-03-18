@@ -22,6 +22,18 @@ module RubyCoffe
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    # config.eager_load_paths << Rails.root.join("extras").
+
+
+    config.time_zone = 'Brasilia'
+    config.active_record.default_timezone = :local
+
+
+
+    # factorybot
+    config.generators do |g|
+      g.factory_bot suffix: "factory"
+    end
+
   end
 end
