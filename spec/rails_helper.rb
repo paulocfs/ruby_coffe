@@ -1,6 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'simplecov'
+require 'capybara/rspec'
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -91,5 +92,12 @@ RSpec.configure do |config|
     config.cassette_library_dir = "fixtures/vcr_cassettes"
     config.hook_into :webmock
   end
+
+
+  #capybara
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+  Capybara.current_driver = :selenium_chrome
 
 end
