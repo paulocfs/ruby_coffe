@@ -68,5 +68,7 @@ RSpec.configure do |config|
   #factory_bot_rails
   config.include FactoryBot::Syntax::Methods
 
-  
+  #faker
+  Faker::Config.locale = 'pt-BR'
+
 end
