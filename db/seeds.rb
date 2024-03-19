@@ -1,9 +1,25 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
+
+
+
+def custom_cep
+  Faker::Number.number(digits: 5).to_i.to_s + "-" + Faker::Number.number(digits: 3).to_i.to_s
+end
+
+def custom_number
+  Faker::Number.number(digits: 5)
+end
+
+
+2.times do
+  StoreAdress.find_or_create_by(
+    cep: custom_cep,
+    address: Faker::Address.street_address,
+    number: custom_number,
+    neighborhood: Faker::Address.community,
+    state: Faker::Address.state,
+    country: Faker::Address.country,
+    active: true,
+    deleted_at: nil
+  )
+end
