@@ -1,9 +1,9 @@
 class StoreAdress < ApplicationRecord
 
   validates :cep, 
-    presence: true,
     format: { with: /\A\d{5}-\d{3}\z/},
     length: { minimum: 8, maximum: 10 },
+    presence: true,
     allow_nil: false,
     allow_blank: false,
     on: [:create, :update]
@@ -16,7 +16,7 @@ class StoreAdress < ApplicationRecord
     on: [:create, :update]
 
   validates :number,
-    length: { maximum: 5 },
+    numericality: {only_integer: true},
     presence: true,
     allow_nil: false,
     allow_blank: false,
@@ -46,6 +46,8 @@ class StoreAdress < ApplicationRecord
 
   validates :active, 
     inclusion: { in: [true, false] },
+    allow_nil: false,
+    allow_blank: false,
     on: [:create, :update]
 
 
@@ -53,6 +55,6 @@ class StoreAdress < ApplicationRecord
     presence: true, 
     allow_nil: true,
     allow_blank: false,
-    on: [:create, :update, :delete]
+    on: [:delete]
 
 end
