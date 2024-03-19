@@ -61,6 +61,8 @@ group :development, :test do
 
   gem 'simplecov', '~> 0.22.0', require: false
 
+  gem 'webmock', '~> 3.23'
+
   gem 'vcr', '~> 6.2'
 
 end
