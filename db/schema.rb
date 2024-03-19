@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_201012) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_18_202433) do
   create_table "store_emails", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", null: false
+    t.boolean "active", default: true
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "store_phones", charset: "utf8mb4", force: :cascade do |t|
+    t.string "phone", null: false
     t.boolean "active", default: true
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
