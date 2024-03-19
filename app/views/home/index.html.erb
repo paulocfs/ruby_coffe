@@ -70,4 +70,9 @@
 <%= render partial: "products", locals: { store: @store } %>
 <%= render partial: "reservations", locals: { store: @store } %>
 <%= render partial: "testimonials", locals: { store: @store } %>
-<%= render partial: "contacts", locals: { store_emails: @store_emails, store_phones: @store_phones  } %>
+<%= render partial: "contacts", locals: { 
+    store_emails: @store_emails, 
+    store_phones: @store_phones,
+    store_adresses: @store_adresses  
+    } 
+%>
