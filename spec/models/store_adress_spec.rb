@@ -38,7 +38,7 @@ RSpec.describe StoreAdress, type: :model do
       # minimo - update
       it do should validate_length_of(:cep).is_at_least(8).on(:update) end
       
-      # maximo - create  
+      # maximo - create
       it do should validate_length_of(:cep).is_at_most(10).on(:create) end
       it do should validate_length_of(:address).is_at_most(200).on(:create) end
       it do should validate_length_of(:neighborhood).is_at_most(200).on(:create) end
@@ -103,7 +103,7 @@ RSpec.describe StoreAdress, type: :model do
     end
 
     describe 'inclusion' do 
-      it {should validate_inclusion_of(:active).in_array([true, false])}
+      it { should validate_inclusion_of(:active).in_array([true, false]) }
     end
 
 
