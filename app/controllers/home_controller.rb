@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
 
+ 
+
   def index 
 
     @store = Store.first

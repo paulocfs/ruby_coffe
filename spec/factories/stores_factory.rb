@@ -1,6 +1,8 @@
 FactoryBot.define do
+
   factory :store do
-    name { "MyString" }
-    date_inauguration { "2024-03-18" }
+    name { Faker::Company.name }
+    date_inauguration { Faker::Date.in_date_period }
   end
+
 end
