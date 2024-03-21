@@ -68,7 +68,7 @@ RSpec.describe StoreAdress, type: :model do
 
     end
 
-    describe 'allow or not nil' do 
+    describe 'allow_nil or not' do 
       it { should_not allow_value(nil).for(:cep).on(:create) }
       it { should_not allow_value(nil).for(:cep).on(:update) }
       it { should_not allow_value(nil).for(:address).on(:create) }
