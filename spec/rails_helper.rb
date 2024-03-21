@@ -92,13 +92,17 @@ RSpec.configure do |config|
   VCR.configure do |config|
     config.cassette_library_dir = "fixtures/vcr_cassettes"
     config.hook_into :webmock
+    config.allow_http_connections_when_no_cassette = true
+    config.ignore_request do |request|
+      URI(request.uri).host == 'localhost'
+    end
   end
 
 
   #capybara
-  Capybara.register_driver :selenium do |app|
+  Capybara.register_driver :selenium_chrome do |app|
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
   end
-  Capybara.current_driver = :selenium_chrome
+  Capybara.javascript_driver = :selenium_chrome
 
 end

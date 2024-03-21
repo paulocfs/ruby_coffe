@@ -35,5 +35,8 @@ module RubyCoffe
       g.factory_bot suffix: "factory"
     end
 
+
+    
+
   end
 end
