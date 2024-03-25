@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_25_130741) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_25_154732) do
+  create_table "newsletters", charset: "utf8mb4", force: :cascade do |t|
+    t.string "email", limit: 50, null: false
+    t.boolean "active", default: true, null: false
+    t.boolean "adm_notified", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_newsletters_on_email", unique: true
+  end
+
   create_table "store_abouts", charset: "utf8mb4", force: :cascade do |t|
     t.text "vision", size: :tiny, null: false
     t.text "history", size: :tiny, null: false
