@@ -1,6 +1,6 @@
-class CreateStoreAdresses < ActiveRecord::Migration[7.1]
+class CreateStoreAddresses < ActiveRecord::Migration[7.1]
   def change
-    create_table :store_adresses do |t|
+    create_table :store_addresses do |t|
       t.string :cep, limit:10, null:false
       t.string :street, limit:100, null:false
       t.string :number, limit:50, null:false

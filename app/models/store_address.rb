@@ -1,4 +1,4 @@
-class StoreAdress < ApplicationRecord
+class StoreAddress < ApplicationRecord
 
   validates :cep, 
     format: { with: /\A\d{5}-\d{3}\z/},

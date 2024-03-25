@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_25_130005) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_25_130741) do
   create_table "store_abouts", charset: "utf8mb4", force: :cascade do |t|
     t.text "vision", size: :tiny, null: false
     t.text "history", size: :tiny, null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_25_130005) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "store_adresses", charset: "utf8mb4", force: :cascade do |t|
+  create_table "store_addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "cep", limit: 10, null: false
     t.string "street", limit: 100, null: false
     t.string "number", limit: 50, null: false
@@ -39,6 +39,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_25_130005) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_store_emails_on_email", unique: true
+  end
+
+  create_table "store_hours", charset: "utf8mb4", force: :cascade do |t|
+    t.string "monday", limit: 30, default: "close", null: false
+    t.string "tuesday", limit: 30, default: "close", null: false
+    t.string "wednesday", limit: 30, default: "close", null: false
+    t.string "thursday", limit: 30, default: "close", null: false
+    t.string "friday", limit: 30, default: "close", null: false
+    t.string "saturday", limit: 30, default: "close", null: false
+    t.string "sunday", limit: 30, default: "close", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "store_phones", charset: "utf8mb4", force: :cascade do |t|

@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe StoreAdress, type: :model do
+RSpec.describe StoreAddress, type: :model do
  
   context 'db' do
 
-    describe 'name_table' do
+    describe 'name table is store_addresses' do
       it 'name' do
-        expect(described_class.table_name).to eq('store_adresses')
+        expect(described_class.table_name).to eq('store_addresses')
       end
     end
 
     describe 'name_columns' do
       it { should have_db_column(:id) }
       it { should have_db_column(:cep) }
-      it { should have_db_column(:address) }
+      it { should have_db_column(:street) }
       it { should have_db_column(:number) }
       it { should have_db_column(:neighborhood) }
       it { should have_db_column(:state) }
