@@ -1,0 +1,2 @@
+class StoreAbout < ApplicationRecord
+end
