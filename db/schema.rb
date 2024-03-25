@@ -13,35 +13,36 @@
 ActiveRecord::Schema[7.1].define(version: 2024_03_19_122754) do
   create_table "store_adresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "cep", limit: 10, null: false
-    t.string "address", limit: 200, null: false
-    t.bigint "number", null: false
-    t.string "neighborhood", limit: 200, null: false
-    t.string "state", limit: 50, null: false
-    t.string "country", limit: 60, null: false
-    t.boolean "active", default: true
-    t.timestamp "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "store_emails", charset: "utf8mb4", force: :cascade do |t|
-    t.string "email", null: false
-    t.boolean "active", default: true
+    t.string "street", limit: 100, null: false
+    t.string "number", limit: 50, null: false
+    t.string "neighborhood", limit: 50, null: false
+    t.string "state", limit: 5, null: false
+    t.string "country", limit: 75, null: false
+    t.boolean "active", default: true, null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "store_emails", charset: "utf8mb4", force: :cascade do |t|
+    t.string "email", limit: 50, null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_store_emails_on_email", unique: true
+  end
+
   create_table "store_phones", charset: "utf8mb4", force: :cascade do |t|
-    t.string "phone", null: false
-    t.boolean "active", default: true
+    t.string "phone", limit: 15, null: false
+    t.boolean "active", default: true, null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "stores", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name", limit: 200, null: false
+    t.string "name", limit: 25, null: false
     t.date "date_inauguration", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
