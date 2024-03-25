@@ -1,0 +1,2 @@
+class StoreSocialMedium < ApplicationRecord
+end

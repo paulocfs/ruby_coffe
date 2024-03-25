@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_19_122754) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_25_130005) do
+  create_table "store_abouts", charset: "utf8mb4", force: :cascade do |t|
+    t.text "vision", size: :tiny, null: false
+    t.text "history", size: :tiny, null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "store_adresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "cep", limit: 10, null: false
     t.string "street", limit: 100, null: false
@@ -37,6 +45,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_122754) do
     t.string "phone", limit: 15, null: false
     t.boolean "active", default: true, null: false
     t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "store_social_media", charset: "utf8mb4", force: :cascade do |t|
+    t.string "url", limit: 100, null: false
+    t.string "name", limit: 50, null: false
+    t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
