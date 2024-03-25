@@ -10,7 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_25_154732) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_25_170840) do
+  create_table "admins", charset: "utf8mb4", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "fisrt_name", limit: 50
+    t.string "last_name", limit: 50
+    t.string "status_on", limit: 50
+    t.string "uid", limit: 300
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "categories", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", limit: 25, null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "deleted_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", charset: "utf8mb4", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "fisrt_name", limit: 50
+    t.string "last_name", limit: 50
+    t.string "profession", limit: 50
+    t.string "uid_google", limit: 300
+    t.string "avatar_url_google", limit: 300
+    t.boolean "active", default: true
+    t.datetime "deleted_at"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_clients_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
+  end
+
   create_table "newsletters", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", limit: 50, null: false
     t.boolean "active", default: true, null: false
@@ -18,6 +61,53 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_25_154732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_newsletters_on_email", unique: true
+  end
+
+  create_table "offers", charset: "utf8mb4", force: :cascade do |t|
+    t.date "initial_date", null: false
+    t.date "final_date", null: false
+    t.text "description", size: :tiny, null: false
+    t.string "day_week", limit: 20, null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "deleted_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.string "name", limit: 50, null: false
+    t.string "description", limit: 100, null: false
+    t.decimal "price", precision: 5, scale: 2, null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "reservations", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "table_id", null: false
+    t.bigint "client_id", null: false
+    t.decimal "price_hour", precision: 5, scale: 2, null: false
+    t.date "date", null: false
+    t.time "hour", null: false
+    t.integer "number_persons", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "deleted_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_reservations_on_client_id"
+    t.index ["table_id"], name: "index_reservations_on_table_id"
+  end
+
+  create_table "services", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+    t.text "description", size: :tiny, null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "store_abouts", charset: "utf8mb4", force: :cascade do |t|
@@ -85,4 +175,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_25_154732) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tables", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", limit: 25, null: false
+    t.integer "total_persons", null: false
+    t.text "description", size: :tiny, null: false
+    t.boolean "active", null: false
+    t.datetime "deleted_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "testimonials", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.text "body", size: :tiny
+    t.boolean "read_admin", default: false, null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_testimonials_on_client_id"
+  end
+
+  add_foreign_key "products", "categories"
+  add_foreign_key "reservations", "clients"
+  add_foreign_key "reservations", "tables"
+  add_foreign_key "testimonials", "clients"
 end
