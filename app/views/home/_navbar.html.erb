@@ -18,7 +18,8 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu text-capitalize">
-                        <a href="reservation.html" class="dropdown-item">Reservas</a>
+                        <%= link_to "reservas", reservations_path, class: "dropdown-item", id:"link_reservations" %>
+                    
                         <a href="testimonial.html" class="dropdown-item">Depoimentos</a>
                     </div>
                 </div>
