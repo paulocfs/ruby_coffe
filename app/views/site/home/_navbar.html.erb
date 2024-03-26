@@ -12,13 +12,13 @@
                 <%= link_to "home", root_path, class:"nav-item nav-link active text-capitalize", id:"link_home" %>
                 <a href="about.html" class="nav-item nav-link">Sobre</a>
                 
-                <%= link_to "serviços", services_path ,class: "nav-item nav-link text-capitalize", id:"link_services" %>
+                <%= link_to "serviços", site_services_path ,class: "nav-item nav-link text-capitalize", id:"link_services" %>
                
                 <a href="menu.html" class="nav-item nav-link">Menu</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu text-capitalize">
-                        <%= link_to "reservas", reservations_path, class: "dropdown-item", id:"link_reservations" %>
+                        <%= link_to "reservas", site_reservations_path, class: "dropdown-item", id:"link_reservations" %>
                     
                         <a href="testimonial.html" class="dropdown-item">Depoimentos</a>
                     </div>

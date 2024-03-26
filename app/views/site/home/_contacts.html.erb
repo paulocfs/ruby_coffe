@@ -3,8 +3,8 @@
         <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">entrar em contato</h4>
-                <% store_adresses.each do |store_adress|%>
-                <p><i class="fa fa-map-marker-alt mr-2"></i><%=store_adress.address%>, <%=store_adress.number%>, <%=store_adress.state%></p>
+                <% store_addresses.each do |store_address|%>
+                <p><i class="fa fa-map-marker-alt mr-2"></i><%=store_address.street%>, <%=store_address.number%>, <%=store_address.state%></p>
                 <%end%>
                 <%  store_phones.each do |store_phone| %>
                 <p><i class="fa fa-phone-alt mr-2"></i><%= store_phone.phone%></p>
