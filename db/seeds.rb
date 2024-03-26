@@ -1,33 +1,24 @@
+# frozen_string_literal: true
+
 require 'faker'
 
-
-
-
-def custom_cep
-  Faker::Number.number(digits: 5).to_i.to_s + "-" + Faker::Number.number(digits: 3).to_i.to_s
-end
-
-def custom_number
-  Faker::Number.number(digits: 5)
-end
-
-
-1.times do
-  Store.find_or_create_by(
-    name: "ruby coffe",
-    date_inauguration: "2024-03-18",
+25.times do
+  client = Client.new(
+    email: Faker::Internet.email,
+    password: '123456',
+    password_confirmation: '123456',
+    fisrt_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    profession: Faker::Lorem.sentence(word_count: 1),
+    active: Faker::Boolean.boolean,
+    uid_google: nil,
+    avatar_url_google: nil,
+    deleted_at: nil,
+    reset_password_token: nil,
+    reset_password_sent_at: nil,
+    remember_created_at: nil,
+    created_at: Time.now,
+    updated_at: Time.now
   )
-end
-
-2.times do
-  StoreAdress.find_or_create_by(
-    cep: custom_cep,
-    address: Faker::Address.street_address,
-    number: custom_number,
-    neighborhood: Faker::Address.community,
-    state: Faker::Address.state,
-    country: Faker::Address.country,
-    active: true,
-    deleted_at: nil
-  )
+  client.save
 end
