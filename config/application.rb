@@ -36,6 +36,8 @@ module RubyCoffe
     end
 
 
+
+    Faker::Config.locale = 'pt-BR'
     
 
   end

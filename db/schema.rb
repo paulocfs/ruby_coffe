@@ -153,7 +153,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_25_170840) do
   end
 
   create_table "store_phones", charset: "utf8mb4", force: :cascade do |t|
-    t.string "phone", limit: 15, null: false
+    t.string "phone", limit: 20, null: false
     t.boolean "active", default: true, null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
