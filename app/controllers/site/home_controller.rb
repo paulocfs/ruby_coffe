@@ -1,4 +1,5 @@
-class HomeController < ApplicationController
+module Site
+  class HomeController < SiteController
 
  
 
@@ -7,7 +8,7 @@ class HomeController < ApplicationController
     @store = Store.first
     @store_emails = StoreEmail.all
     @store_phones = StorePhone.all
-    @store_adresses = StoreAdress.where(active: true, deleted_at: nil)
+    @store_addresses = StoreAddress.where(active: true, deleted_at: nil)
 
   end
 
@@ -16,4 +17,5 @@ class HomeController < ApplicationController
 
 
 
+  end
 end
